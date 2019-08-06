@@ -1,0 +1,64 @@
+<div class="create-new-game-page">
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="title">Новая игра</span>
+  </mat-toolbar>
+
+  <div class="card">
+    <div class="title">
+      <span>Словарь</span>
+    </div>
+    <div class="content-container select-vocabulary">
+      <div class="content-icon">
+        <mat-icon>timer</mat-icon>
+      </div>
+      <div class="content">
+        <span>Словарь  не выбран</span>
+        <mat-icon class="open">navigate_next</mat-icon>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="card">
+    <div class="title">
+      <span>Команды</span>
+    </div>
+    <div class="content-container">
+      <div class="team-container" *ngFor="let team of [1,2,3]">
+        <div class="content-icon">
+          icon_{{team}}
+        </div>
+        <div class="content">
+          <span>team_{{team}}</span>
+          <mat-icon>clear</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="card">
+    <div class="title">
+      <span>Настройки</span>
+    </div>
+    <div class="content-container">
+      <div class="team-container">
+        <div class="content-icon">
+          <mat-icon>timer</mat-icon>
+        </div>
+        <div class="content">
+          <span>Длина раунда</span>
+          <mat-icon>clear</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="bottom-container">
+    <button mat-flat-button>Начать игру</button>
+  </div>
+</div>

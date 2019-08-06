@@ -1,0 +1,35 @@
+@import "../../global-variables";
+
+.main-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin base-button {
+  margin-bottom: 6px;
+  font-size: 20px;
+  height: 44px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-bottom: 12px;
+
+  .full-colored {
+    @include base-button;
+    background: $main-color;
+    color: white;
+  }
+  .border-colored {
+    @include base-button;
+    border: 2px solid $main-color;
+    color: $main-color;
+  }
+}
+
+

@@ -1,0 +1,81 @@
+@import "../../global-variables";
+
+.create-new-game-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  background: $toolbar-color;
+  color: white;
+
+  .title {
+    margin-left: 16px;
+  }
+}
+
+.bottom-container {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  button {
+    background: #cecece;
+    color: white;
+    border-radius: 0;
+    font-size: 16px;
+    height: 44px;
+  }
+}
+
+.card {
+  color: $main-color;
+  padding-left: 12px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+
+  .title {
+    font-weight: 500;
+    padding-bottom: 12px;
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+
+    .content-icon {
+      width: 60px;
+      mat-icon {
+        font-size: 40px;
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+    }
+  }
+
+  .select-vocabulary {
+    flex-direction: row;
+    span {
+      color: rgba(0, 0, 0, 0.54)
+    }
+    .open {
+      font-size: 40px;
+      height: 40px;
+      width: 40px;
+      color: #616161;
+    }
+  }
+
+  .team-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
