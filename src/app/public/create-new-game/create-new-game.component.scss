@@ -5,6 +5,13 @@
   display: flex;
   flex-direction: column;
 }
+.scrollable-area {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 44px;
+}
 
 .toolbar {
   background: $toolbar-color;
@@ -31,20 +38,21 @@
   }
 }
 
-.card {
-  color: $main-color;
-  padding-left: 12px;
-  padding-top: 8px;
-  padding-bottom: 4px;
+::ng-deep {
+  .card {
+    color: $main-color;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 4px;
 
-  .title {
-    font-weight: 500;
-    padding-bottom: 12px;
-  }
-  .content-container {
-    display: flex;
-    flex-direction: column;
-
+    .title {
+      font-weight: 500;
+      padding-bottom: 16px;
+    }
+    .content-container {
+      display: flex;
+      flex-direction: column;
+    }
     .content-icon {
       width: 60px;
       mat-icon {
@@ -58,24 +66,5 @@
       justify-content: space-between;
       flex: 1;
     }
-  }
-
-  .select-vocabulary {
-    flex-direction: row;
-    span {
-      color: rgba(0, 0, 0, 0.54)
-    }
-    .open {
-      font-size: 40px;
-      height: 40px;
-      width: 40px;
-      color: #616161;
-    }
-  }
-
-  .team-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
   }
 }

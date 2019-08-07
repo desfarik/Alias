@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="title">
+    <span>Настройки</span>
+  </div>
+  <div class="content-container">
+    <div class="content-wrapper">
+      <div class="content-icon">
+        <mat-icon>timer</mat-icon>
+      </div>
+      <div class="setting-content content divider">
+        <div class="description-container">
+          <p>Длина раунда</p>
+          <p class="description">за которое надо отгадать слова</p>
+          <div class="button-container">
+            <button (click)="updateTime(-30)" mat-flat-button>-30 сек</button>
+            <button (click)="updateTime(30)" mat-flat-button>+30 сек</button>
+          </div>
+
+        </div>
+        <div class="time-container">
+          <span class="minutes">{{time | minutes}}</span>
+          <div class="right-container">
+            <p>{{time | seconds}}</p>
+            <p>мин</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-wrapper">
+      <div class="content-icon">
+        <mat-icon>description</mat-icon>
+      </div>
+      <div class="setting-content content">
+        <div>
+          <p>Количество слов</p>
+          <p class="description">для победы</p>
+          <div class="button-container">
+            <button (click)="updateWordCount(-10)" mat-flat-button>-10 слов</button>
+            <button (click)="updateWordCount(10)" mat-flat-button>+10 слов</button>
+          </div>
+
+        </div>
+        <div class="word-count">
+          {{wordCount}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+@import "../../../../global-variables";
+.select-dictionary {
+  flex-direction: row;
+  margin: -8px 0 -4px -12px;
+  padding: 8px 0 4px 12px;
+  span {
+    color: $text-color;
+  }
+  .open {
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    color: #616161;
+  }
+}

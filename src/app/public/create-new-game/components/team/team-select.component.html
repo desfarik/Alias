@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="title">
+    <span>Команды</span>
+  </div>
+  <div class="content-container">
+    <div class="team-container" *ngFor="let team of [1,2,3]">
+      <div class="content-icon">
+        icon_{{team}}
+      </div>
+      <div class="content">
+        <span>team_{{team}}</span>
+        <mat-icon>clear</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

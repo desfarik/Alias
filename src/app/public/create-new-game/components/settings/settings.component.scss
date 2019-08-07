@@ -1,0 +1,65 @@
+@import "../../../../global-variables";
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.setting-content {
+  align-items: start;
+  color: $text-color;
+  p {
+    margin: 0;
+  }
+  .description-container {
+    padding-right: 16px;
+  }
+  .description {
+    color: $text-subtitle-color;
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .button-container {
+    margin: 8px 0 12px;
+    button {
+      background: $main-color;
+      color: white;
+      margin-right: 8px;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 12px;
+    }
+  }
+}
+.divider {
+  border-bottom: 1px solid $divider-color;
+  margin-bottom: 12px;
+}
+
+.time-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-right: 6px;
+  margin-top: -10px;
+  width: 82px;
+  justify-content: flex-end;
+
+  .minutes {
+    font-size: 40px;
+    position: relative;
+    top: 6px;
+    right: 6px;
+  }
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 38px;
+  }
+}
+.word-count {
+  font-size: 40px;
+  padding-right: 6px;
+  margin-top: -5px;
+}
