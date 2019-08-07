@@ -1,0 +1,30 @@
+<div class="pre-game-round-page">
+  <div class="toolbar">
+    <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="title">
+      <p>Следующими играют</p>
+      <h1>{{nextTeam.name}}</h1>
+      <img src="{{nextTeam.icon}}"/>
+    </div>
+  </div>
+  <div class="scrollable-area">
+    <mat-radio-group
+      class="teams-container"
+      [(ngModel)]="nextTeam">
+      <div matRipple *ngFor="let team of gameService.game.teams" (click)="hardSelectTeam(team)" >
+        <mat-radio-button class="team-container" [value]="team" (disabled)="true">
+          <div class="team-description">
+            <span>{{team.name}}</span>
+            <span class="points">{{team.points}}</span>
+          </div>
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </div>
+
+  <div class="bottom-container">
+    <button (click)="startGame()" mat-flat-button>Начать игру</button>
+  </div>
+</div>

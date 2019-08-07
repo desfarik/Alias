@@ -1,0 +1,150 @@
+@import "../../global-variables";
+
+.create-new-game-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  background: $toolbar-color;
+  color: white;
+  min-height: 56px;
+
+  .title {
+    margin-left: 16px;
+  }
+}
+
+.card-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-container {
+  cursor: move;
+  height: 60vw;
+  width: 70vw;
+  perspective: 30rem;
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.flip .front {
+  transform: rotateY(180deg);
+}
+
+.flip .back {
+  transform: rotateY(360deg);
+}
+
+.front {
+  background: $main-color;
+  border: 4px solid #49bdca;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    color: white;
+    text-align: center;
+    padding: 12px 24px;
+  }
+}
+
+.drag-box {
+  background: white;
+  border: 4px solid #49bdca;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  p {
+    color: $text-color;
+    text-align: center;
+    padding: 12px 24px;
+  }
+}
+
+.green-triangle {
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 30px solid #56cd8d;
+}
+
+.red-triangle {
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 30px solid $toolbar-color;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  display: none;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.description-container {
+  margin: 24px;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    font-size: 24px;
+    color: $text-subtitle-color;
+  }
+  .counter-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: -6px;
+  left: 10%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+
+  &.done {
+    background: $main-color;
+  }
+  &.skip {
+    background: $toolbar-color;
+  }
+}

@@ -1,0 +1,41 @@
+<div class="create-new-game-page">
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span class="title">{{gameService.game.currentTeam.name}}</span>
+  </mat-toolbar>
+
+
+  <div class="card-container">
+    <div class="description-container">
+      <div class="counter-container">
+        <p>Отгадано</p>
+        <div *ngIf="doneCounter > 0" class="counter done">+{{doneCounter}}</div>
+      </div>
+      <div class="green-triangle"></div>
+    </div>
+
+    <div #flipContainer class="flip-container">
+      <div class="front" (click)="startRound()">
+        <div></div>
+        <p>Нажмите на карту для начала&nbsp;игры</p>
+      </div>
+      <div class="back" cdkDropList>
+        <div class="drag-box" cdkDrag
+             (cdkDragEnded)="dragEnd($event)">
+          <p>{{word}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="description-container">
+      <div class="red-triangle"></div>
+      <div class="counter-container">
+        <p>Пропустить</p>
+        <div *ngIf="skipCounter > 0" class="counter skip">+{{skipCounter}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
