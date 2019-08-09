@@ -14,6 +14,12 @@
   .title {
     margin-left: 16px;
   }
+  .toolbar-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .card-container {
@@ -81,6 +87,14 @@
   }
 }
 
+.card-logo {
+  padding-top: 10%;
+  text-align: center;
+  img {
+    width: 80%;
+  }
+}
+
 .green-triangle {
   border-left: 35px solid transparent;
   border-right: 35px solid transparent;
@@ -88,6 +102,7 @@
 }
 
 .red-triangle {
+  margin-top: 8px;
   border-left: 35px solid transparent;
   border-right: 35px solid transparent;
   border-top: 30px solid $toolbar-color;

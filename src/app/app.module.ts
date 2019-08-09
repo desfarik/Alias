@@ -24,6 +24,9 @@ import {PreGameRoundComponent} from './public/pre-game-round/pre-game-round.comp
 import {FormsModule} from "@angular/forms";
 import {GameRoundComponent} from './public/game-round/game-round.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {ProgressBarComponent} from './public/game-round/components/progress-bar/progress-bar.component';
+import {ProgressTimerComponent} from './public/game-round/components/progress-timer/progress-timer.component';
+import {SelectTeamDialogComponent} from './public/create-new-game/components/team/select-team.dialog/select-team.dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     MinutesPipe,
     PreGameRoundComponent,
     GameRoundComponent,
+    ProgressBarComponent,
+    ProgressTimerComponent,
+    SelectTeamDialogComponent,
   ],
   imports: [
     MatButtonModule,

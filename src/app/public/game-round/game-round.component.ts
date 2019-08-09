@@ -12,8 +12,9 @@ export class GameRoundComponent implements OnInit {
   @ViewChild("flipContainer", {static: true})
   public flipContainer: ElementRef<HTMLDivElement>;
   public word: string = 'bla';
-  public doneCounter:number = 0;
-  public skipCounter:number = 0;
+  public doneCounter: number = 0;
+  public skipCounter: number = 0;
+  public gameStarted: boolean = false;
 
   constructor(public gameService: GameService) {
   }
@@ -41,6 +42,7 @@ export class GameRoundComponent implements OnInit {
 
   public startRound() {
     this.flipContainer.nativeElement.classList.add('flip');
+    this.gameStarted = true;
   }
 
   public done2(event: CdkDragEnd) {

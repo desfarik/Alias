@@ -1,0 +1,30 @@
+@import "../../../../global-variables";
+
+@keyframes progress-animation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.progress-container {
+  height: 4px;
+  width: 100%;
+  position: relative;
+}
+
+.progress-line {
+  height: 4px;
+  width: 0;
+  background: $main-color;
+}
+
+.bottom-line {
+  position: absolute;
+  top: 0;
+  height: 4px;
+  width: 100%;
+  background: $divider-color;
+}

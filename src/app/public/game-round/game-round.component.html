@@ -3,8 +3,15 @@
     <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <span class="title">{{gameService.game.currentTeam.name}}</span>
+    <div class="toolbar-content">
+      <span class="title">{{gameService.game.currentTeam.name}}</span>
+      <progress-timer [time]="gameService.game.duration"
+                      [gameStarted]="gameStarted"></progress-timer>
+    </div>
+
   </mat-toolbar>
+  <progress-bar [time]="gameService.game.duration"
+                [gameStarted]="gameStarted"></progress-bar>
 
 
   <div class="card-container">
@@ -18,7 +25,7 @@
 
     <div #flipContainer class="flip-container">
       <div class="front" (click)="startRound()">
-        <div></div>
+        <div class="card-logo"><img src="../../../assets/alias-card.svg"></div>
         <p>Нажмите на карту для начала&nbsp;игры</p>
       </div>
       <div class="back" cdkDropList>

@@ -7,7 +7,7 @@ export class SecondsPipe implements PipeTransform {
 
   transform(value: number): any {
     const seconds = value % 60;
-    return seconds || '';
+    return seconds || '00';
   }
 
 }
