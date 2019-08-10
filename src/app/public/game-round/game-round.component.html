@@ -6,7 +6,8 @@
     <div class="toolbar-content">
       <span class="title">{{gameService.game.currentTeam.name}}</span>
       <progress-timer [time]="gameService.game.duration"
-                      [gameStarted]="gameStarted"></progress-timer>
+                      [gameStarted]="gameStarted"
+                      (onRoundFinish)="finishRound()"></progress-timer>
     </div>
 
   </mat-toolbar>

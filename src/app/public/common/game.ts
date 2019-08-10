@@ -1,5 +1,6 @@
-import {ITeam, Team} from "./team";
-import {DictionaryService} from "./service/dictionary.service";
+import {ITeam, Team} from './team';
+import {DictionaryService} from './service/dictionary.service';
+import {Word} from '../game-round/game-round.component';
 
 
 export class Game {
@@ -8,13 +9,15 @@ export class Game {
   public duration: number;
   public pointCount: number;
   public currentTeam: Team;
+  public finishedRoundWords: Word[];
 
   constructor(game: IGame) {
-    this.words = game.words && DictionaryService.getWords(game.dictionaryName);
+    this.words = game.words || DictionaryService.getWords(game.dictionaryName);
     this.duration = game.duration;
     this.pointCount = game.pointCount;
     this.teams = game.teams.map(team => new Team(team));
     this.currentTeam = game.currentTeam && new Team(game.currentTeam);
+    this.finishedRoundWords = game.finishedRoundWords ? game.finishedRoundWords.map(word => new Word(word)) : [];
   }
 
   public setCurrentTeam(team: Team): void {
@@ -29,4 +32,5 @@ export interface IGame {
   duration: number;
   pointCount: number;
   currentTeam?: ITeam;
+  finishedRoundWords?: Word[];
 }

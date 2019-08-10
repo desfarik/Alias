@@ -1,0 +1,63 @@
+<div class="round-result-page">
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="toolbar-content">
+      <span class="title">{{gameService.game.currentTeam.name}}</span>
+    </div>
+
+  </mat-toolbar>
+  <div class="under-toolbar-content">
+    <span>Набрано очков</span>
+    <span class="points">{{calculatePoints()}}</span>
+  </div>
+  <div class="scrollable-area">
+    <div class="description-container minimize-icon">
+      <div>
+        <div class="done-icon">
+          <mat-icon>done</mat-icon>
+        </div>
+        <span>Отгадано</span></div>
+      <div>
+        <div class="skip-icon">
+          <mat-icon>clear</mat-icon>
+        </div>
+        <span>Пропущено</span></div>
+      <div>
+        <div class="delete-icon">
+          <mat-icon>delete</mat-icon>
+        </div>
+        <span>Снято</span></div>
+    </div>
+    <div>
+      <div class="word-description" *ngFor="let word of words">
+        <span [ngStyle]="{'text-decoration': word.done === undefined ? 'line-through' : ''}">
+          {{word.value | startCase}}</span>
+        <div class="actions">
+          <div class="done-icon"
+               [ngClass]="{'selected': word.done===true}"
+               (click)="word.done=true">
+            <mat-icon>done</mat-icon>
+          </div>
+          <div class="skip-icon"
+               [ngClass]="{'selected': word.done===false}"
+               (click)="word.done=false">
+            <mat-icon>clear</mat-icon>
+          </div>
+          <div class="delete-icon"
+               [ngClass]="{'selected': word.done===undefined}"
+               (click)="word.done=undefined">
+            <mat-icon>delete</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-container">
+    <button (click)="finish()" mat-flat-button>Завершить</button>
+  </div>
+
+</div>
+

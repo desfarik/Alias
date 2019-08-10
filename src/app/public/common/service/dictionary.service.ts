@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-
+import {SimpleDictionary} from '../simple.dictionary';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +9,6 @@ export class DictionaryService {
   }
 
   public static getWords(name: string): string[] {
-    return [];
+    return SimpleDictionary;
   }
 }

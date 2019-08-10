@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Game} from "../common/game";
-import {GameService} from "../common/service/game.service";
-import {Router} from "@angular/router";
-import {SettingsComponent} from "./components/settings/settings.component";
+import {Game} from '../common/game';
+import {GameService} from '../common/service/game.service';
+import {Router} from '@angular/router';
+import {SettingsComponent} from './components/settings/settings.component';
 
 @Component({
   selector: 'app-create-new-game',
@@ -27,7 +27,7 @@ export class CreateNewGameComponent implements OnInit {
       pointCount: this.settings.wordCount
     });
     this.gameService.createNewGame(newGame);
-    this.router.navigate(['/pre-game-round'])
+    this.router.navigate(['/pre-game-round']);
   }
 
 }

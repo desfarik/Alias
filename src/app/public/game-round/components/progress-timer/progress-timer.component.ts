@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'progress-timer',
@@ -10,6 +10,8 @@ export class ProgressTimerComponent implements OnInit, OnChanges, OnDestroy {
   public time: number;
   @Input()
   public gameStarted: boolean;
+  @Output()
+  public onRoundFinish = new EventEmitter<void>();
   public counter: number;
   @ViewChild('timer', {static: false})
   public timer: ElementRef<HTMLDivElement>;
@@ -47,6 +49,7 @@ export class ProgressTimerComponent implements OnInit, OnChanges, OnDestroy {
     this.intervalId = undefined;
     console.log('end game');
     window.navigator.vibrate(1000);
+    this.onRoundFinish.emit();
   }
 
   ngOnDestroy(): void {
