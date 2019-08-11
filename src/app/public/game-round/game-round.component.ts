@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GameService} from '../common/service/game.service';
 import {CdkDragEnd} from '@angular/cdk/drag-drop';
 import {Router} from '@angular/router';
+import set = Reflect.set;
 
 @Component({
   selector: 'app-game-round',
@@ -34,21 +35,40 @@ export class GameRoundComponent implements OnInit {
     this.gameStarted = true;
   }
 
-  public dragEnd(event: CdkDragEnd) {
+  public dragEnd(event: CdkDragEnd<HTMLDivElement>) {
+    console.log(event);
     if (event.distance.y < 0) {
       this.doneCounter++;
       this.words.push(new Word({value: this.word, done: true}));
+      this.setNewWord(event);
       console.log('done');
     } else if (event.distance.y > 0) {
       this.skipCounter++;
       this.words.push(new Word({value: this.word, done: false}));
+      this.setNewWord(event);
       console.log('skip');
     }
-    this.word = this.gameService.getNextWord();
+  }
+
+  public setNewWord(event: CdkDragEnd<HTMLDivElement>): void {
+    event.source.element.nativeElement.style.transition = 'all linear 0.3s';
+    event.source.element.nativeElement.style.top = `${event.distance.y }px`;
+    event.source.element.nativeElement.style.left = `${event.distance.x}px`;
+    setTimeout(() => {
+      event.source.element.nativeElement.style.top = `${event.distance.y * 6}px`;
+      event.source.element.nativeElement.style.left = `${event.distance.x * 6}px`;
+    }, 20);
+
+    setTimeout(() => {
+        this.word = this.gameService.getNextWord();
+        event.source.element.nativeElement.style.transition = 'none';
+        event.source.element.nativeElement.style.top = '0';
+        event.source.element.nativeElement.style.left = '0';
+      }, 300
+    );
   }
 
   ngOnInit() {
-    this.gameService.game.duration = 10;
     this.gameService.shuffleWords();
     this.word = this.gameService.getNextWord();
   }
