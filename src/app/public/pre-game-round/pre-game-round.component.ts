@@ -10,14 +10,16 @@ import {Router} from "@angular/router";
 })
 export class PreGameRoundComponent implements OnInit {
   public nextTeam: Team;
+  public newRound: boolean;
 
   constructor(public gameService: GameService, private router: Router) {
     this.nextTeam = this.gameService.game.teams.find(team => !team.played);
+    this.newRound = this.gameService.game.teams.every(team => !team.played);
   }
 
   // TODO fix it
   public hardSelectTeam(team: Team) {
-    if (team !== this.nextTeam) {
+    if (!team.played && team !== this.nextTeam) {
       this.nextTeam = team;
     }
   }
@@ -25,6 +27,10 @@ export class PreGameRoundComponent implements OnInit {
   public startGame() {
     this.gameService.game.setCurrentTeam(this.nextTeam);
     this.gameService.save();
+    if (this.gameService.game.teams.every(team => team.roundPoints !== undefined)) {
+      this.gameService.game.teams.forEach(team => team.roundPoints = undefined);
+      this.gameService.save();
+    }
     this.router.navigate(['/game-round']);
     // var audio = new Audio('/assets/audio.mp3');
     // audio.play();

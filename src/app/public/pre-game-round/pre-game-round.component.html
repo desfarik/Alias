@@ -13,11 +13,18 @@
     <mat-radio-group
       class="teams-container"
       [(ngModel)]="nextTeam">
-      <div matRipple *ngFor="let team of gameService.game.teams" (click)="hardSelectTeam(team)" >
-        <mat-radio-button class="team-container" [value]="team" (disabled)="true">
+      <div matRipple *ngFor="let team of gameService.game.teams" (click)="hardSelectTeam(team)">
+        <mat-radio-button class="team-container" [value]="team" [disabled]="team.played"
+                          [ngClass]="{'new-round':newRound}">
           <div class="team-description">
-            <span>{{team.name}}</span>
-            <span class="points">{{team.points}}</span>
+            <div class="team-name">
+              <p>{{team.name}}</p>
+              <p *ngIf="!team.played" class="has-game">* Игра в запасе</p>
+            </div>
+            <div class="points">
+              <span class="round-points" [ngClass]="{'not-played': team.roundPoints === undefined}">{{team.roundPoints || '-'}}</span>
+              <span>{{team.points}}</span>
+            </div>
           </div>
         </mat-radio-button>
       </div>
