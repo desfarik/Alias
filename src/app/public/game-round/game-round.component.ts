@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GameService} from '../common/service/game.service';
 import {CdkDragEnd} from '@angular/cdk/drag-drop';
 import {Router} from '@angular/router';
-import set = Reflect.set;
 
 @Component({
   selector: 'app-game-round',
@@ -33,10 +32,10 @@ export class GameRoundComponent implements OnInit {
   public startRound() {
     this.flipContainer.nativeElement.classList.add('flip');
     this.gameStarted = true;
+    setTimeout(()=>this.flipContainer.nativeElement.classList.add('has-background'), 200)
   }
 
   public dragEnd(event: CdkDragEnd<HTMLDivElement>) {
-    console.log(event);
     if (event.distance.y < 0) {
       this.doneCounter++;
       this.words.push(new Word({value: this.word, done: true}));
@@ -54,6 +53,7 @@ export class GameRoundComponent implements OnInit {
     event.source.element.nativeElement.style.transition = 'all linear 0.3s';
     event.source.element.nativeElement.style.top = `${event.distance.y }px`;
     event.source.element.nativeElement.style.left = `${event.distance.x}px`;
+    event.source.element.nativeElement.style.pointerEvents = 'none';
     setTimeout(() => {
       event.source.element.nativeElement.style.top = `${event.distance.y * 6}px`;
       event.source.element.nativeElement.style.left = `${event.distance.x * 6}px`;
@@ -64,6 +64,7 @@ export class GameRoundComponent implements OnInit {
         event.source.element.nativeElement.style.transition = 'none';
         event.source.element.nativeElement.style.top = '0';
         event.source.element.nativeElement.style.left = '0';
+        event.source.element.nativeElement.style.pointerEvents = '';
       }, 300
     );
   }

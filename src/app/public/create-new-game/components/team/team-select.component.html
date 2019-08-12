@@ -2,15 +2,12 @@
   <div class="title">
     <span>Команды</span>
   </div>
-  <div class="content-container">
-    <div class="team-container" *ngFor="let team of [1,2,3]">
-      <div class="content-icon">
-        icon_{{team}}
-      </div>
-      <div class="content">
-        <span>team_{{team}}</span>
-        <mat-icon>clear</mat-icon>
-      </div>
+  <div class="content-container team-container">
+    <div class="team-icon-wrapper"
+         (click)="selectedTeams.delete(icon) ||selectedTeams.add(icon)"
+         [ngClass]="{'selected': selectedTeams.has(icon)}"
+         *ngFor="let icon of teamService.teamsIcons">
+      <img  src="{{'assets/teams/'+icon+'.svg'}}">
     </div>
   </div>
 </div>

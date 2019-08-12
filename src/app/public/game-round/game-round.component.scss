@@ -30,9 +30,11 @@
   align-items: center;
   justify-content: center;
 }
+
 progress-bar {
   z-index: 1000;
 }
+
 .flip-container {
   cursor: move;
   height: 60vw;
@@ -54,6 +56,23 @@ progress-bar {
 }
 
 .flip .front {
+  transform: rotateY(180deg);
+}
+
+.has-background .front:before {
+  visibility: visible;
+}
+
+.front:before {
+  visibility: hidden;
+  content: '';
+  position: absolute;
+  background: url("../../../assets/card-background.svg") 50% no-repeat;
+  background-size: contain;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
   transform: rotateY(180deg);
 }
 
@@ -115,7 +134,6 @@ progress-bar {
   border-top: 30px solid $toolbar-color;
 }
 
-
 .cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   display: none;
 }
@@ -162,4 +180,8 @@ progress-bar {
   &.skip {
     background: $toolbar-color;
   }
+}
+
+progress-timer {
+  height: 32px;
 }

@@ -5,8 +5,8 @@
     </button>
     <div class="title">
       <p>Следующими играют</p>
-      <h1>{{nextTeam.name}}</h1>
-      <img src="{{nextTeam.icon}}"/>
+      <p class="next-team-name">{{nextTeam.name}}</p>
+      <div class="team-icon"><img src="{{'assets/teams/'+nextTeam.icon+'.svg'}}"/></div>
     </div>
   </div>
   <div class="scrollable-area">
@@ -22,7 +22,7 @@
               <p *ngIf="!team.played" class="has-game">* Игра в запасе</p>
             </div>
             <div class="points">
-              <span class="round-points" [ngClass]="{'not-played': team.roundPoints === undefined}">{{team.roundPoints || '-'}}</span>
+              <span class="round-points" [ngClass]="{'not-played': team.roundPoints === undefined}">{{team.roundPoints === undefined ? '-' : team.roundPoints}}</span>
               <span>{{team.points}}</span>
             </div>
           </div>
