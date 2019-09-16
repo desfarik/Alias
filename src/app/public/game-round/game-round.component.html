@@ -1,7 +1,7 @@
 <div class="create-new-game-page">
   <mat-toolbar class="toolbar">
     <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
-      <mat-icon>arrow_back</mat-icon>
+      <mat-icon>clear</mat-icon>
     </button>
     <div class="toolbar-content">
       <span class="title">{{gameService.game.currentTeam.name}}</span>
@@ -41,7 +41,7 @@
       <div class="red-triangle"></div>
       <div class="counter-container">
         <p>Пропустить</p>
-        <div *ngIf="skipCounter > 0" class="counter skip">+{{skipCounter}}</div>
+        <div *ngIf="skipCounter > 0" class="counter skip">-{{skipCounter}}</div>
       </div>
     </div>
   </div>

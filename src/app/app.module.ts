@@ -7,7 +7,15 @@ import {AppRoutes} from './route-config';
 import {MainComponent} from './public/main/main.component';
 import {CreateNewGameComponent} from './public/create-new-game/create-new-game.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatDividerModule, MatIconModule, MatRadioModule, MatRippleModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatIconModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatToolbarModule
+} from '@angular/material';
 import {DictionaryComponent} from './public/create-new-game/components/dictionary/dictionary.component';
 import {TeamSelectComponent} from './public/create-new-game/components/team/team-select.component';
 import {SettingsComponent} from './public/create-new-game/components/settings/settings.component';
@@ -19,9 +27,9 @@ import {GameRoundComponent} from './public/game-round/game-round.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ProgressBarComponent} from './public/game-round/components/progress-bar/progress-bar.component';
 import {ProgressTimerComponent} from './public/game-round/components/progress-timer/progress-timer.component';
-import {SelectTeamDialogComponent} from './public/create-new-game/components/team/select-team.dialog/select-team.dialog.component';
 import {RoundResultComponent} from './public/round-result/round-result.component';
 import {StartCasePipe} from './public/round-result/pipes/start-case.pipe';
+import {WinnerDialogComponent} from './public/pre-game-round/winner-dialog/winner.dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +45,9 @@ import {StartCasePipe} from './public/round-result/pipes/start-case.pipe';
     GameRoundComponent,
     ProgressBarComponent,
     ProgressTimerComponent,
-    SelectTeamDialogComponent,
     RoundResultComponent,
     StartCasePipe,
+    WinnerDialogComponent,
   ],
   imports: [
     MatButtonModule,
@@ -52,10 +60,12 @@ import {StartCasePipe} from './public/round-result/pipes/start-case.pipe';
     FormsModule,
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [WinnerDialogComponent],
+  bootstrap: [AppComponent],
+  entryComponents: [WinnerDialogComponent]
 })
 export class AppModule {
 }

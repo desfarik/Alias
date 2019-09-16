@@ -1,6 +1,6 @@
 <div class="pre-game-round-page">
   <div class="toolbar">
-    <button mat-icon-button routerLink="/" routerLinkActive="true" class="home-button">
+    <button mat-icon-button (click)="goBack()" routerLinkActive="true" class="home-button">
       <mat-icon>arrow_back</mat-icon>
     </button>
     <div class="title">
@@ -31,7 +31,10 @@
     </mat-radio-group>
   </div>
 
-  <div class="bottom-container">
-    <button (click)="startGame()" mat-flat-button>Начать игру</button>
+  <div *ngIf="!canStartNewGame" class="bottom-container">
+    <button (click)="startGame()" mat-flat-button>{{extraRound ? "Начать дополнительный раунд": "Начать игру"}}</button>
+  </div>
+  <div *ngIf="canStartNewGame" class="bottom-container">
+    <button (click)="startNewGame()" mat-flat-button>Начать новую игру</button>
   </div>
 </div>

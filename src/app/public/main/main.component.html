@@ -3,6 +3,8 @@
     <img src="../../../assets/alias_logo.svg">
   </div>
   <div class="button-container">
+    <button *ngIf="hasGame" mat-flat-button class="full-colored"
+            routerLink="/pre-game-round" routerLinkActive="active">Продолжить</button>
     <button mat-flat-button class="full-colored"
             routerLink="/create-new-game" routerLinkActive="active">Новая игра</button>
     <button mat-flat-button class="border-colored">Словари</button>

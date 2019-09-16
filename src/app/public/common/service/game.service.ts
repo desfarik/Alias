@@ -43,6 +43,9 @@ export class GameService {
 
   public finishRound(points: number): void {
     const currentTeam = this.game.teams.find((team) => team.name === this.game.currentTeam.name);
+    if (currentTeam.played) {
+      currentTeam.points -= currentTeam.roundPoints;
+    }
     currentTeam.points += points;
     currentTeam.roundPoints = points;
     currentTeam.played = true;
