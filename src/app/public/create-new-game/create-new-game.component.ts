@@ -13,11 +13,11 @@ import {DictionaryComponent} from './components/dictionary/dictionary.component'
 })
 export class CreateNewGameComponent implements OnInit {
   @ViewChild(SettingsComponent, {static: true})
-  private settings: SettingsComponent;
+  public settings: SettingsComponent;
   @ViewChild(TeamSelectComponent, {static: true})
-  private teamComponent: TeamSelectComponent;
+  public teamComponent: TeamSelectComponent;
   @ViewChild(DictionaryComponent, {static: true})
-  private dictionaryComponent: DictionaryComponent;
+  public dictionaryComponent: DictionaryComponent;
 
   constructor(private gameService: GameService, private router: Router) {
   }
@@ -38,6 +38,10 @@ export class CreateNewGameComponent implements OnInit {
     });
     this.gameService.createNewGame(newGame);
     this.router.navigate(['/pre-game-round']);
+  }
+
+  public isValid(): boolean {
+    return !!this.dictionaryComponent.selectedDictionary && this.teamComponent.getTeams().length >= 2;
   }
 
 }

@@ -17,6 +17,8 @@
   </div>
 
   <div class="bottom-container">
-    <button (click)="createNewGame()" mat-flat-button>Начать игру</button>
+    <button [disabled]="!isValid()"
+            (click)="createNewGame()" mat-flat-button>Начать игру
+    </button>
   </div>
 </div>
