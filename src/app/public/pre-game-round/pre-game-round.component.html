@@ -13,7 +13,7 @@
     <mat-radio-group
       class="teams-container"
       [(ngModel)]="nextTeam">
-      <div matRipple *ngFor="let team of gameService.game.teams" (click)="hardSelectTeam(team)">
+      <div matRipple *ngFor="let team of teams" (click)="hardSelectTeam(team)">
         <mat-radio-button class="team-container" [value]="team" [disabled]="team.played"
                           [ngClass]="{'new-round':newRound}">
           <div class="team-description">

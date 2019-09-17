@@ -23,13 +23,15 @@ export class CreateNewGameComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem(GameService.GAME_KEY)) {
+      this.settings.time = this.gameService.game.duration;
+      this.settings.wordCount = this.gameService.game.pointCount;
+      this.dictionaryComponent.selectedDictionary = this.gameService.game.dictionaryName;
+      this.teamComponent.selectedTeams = new Set(this.gameService.game.teams.map(team => team.name));
+    }
   }
 
   public createNewGame(): void {
-    if (this.teamComponent.selectedTeams.size < 2) {
-      console.error('pidor');
-      return;
-    }
     const newGame = new Game({
       dictionaryName: this.dictionaryComponent.selectedDictionary,
       teams: this.teamComponent.getTeams(),
@@ -41,7 +43,7 @@ export class CreateNewGameComponent implements OnInit {
   }
 
   public isValid(): boolean {
-    return !!this.dictionaryComponent.selectedDictionary && this.teamComponent.getTeams().length >= 2;
+    return !!this.dictionaryComponent.selectedDictionary && this.teamComponent.selectedTeams.size >= 2;
   }
 
 }

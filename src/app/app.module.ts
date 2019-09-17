@@ -32,6 +32,7 @@ import {ProgressTimerComponent} from './public/game-round/components/progress-ti
 import {RoundResultComponent} from './public/round-result/round-result.component';
 import {StartCasePipe} from './public/round-result/pipes/start-case.pipe';
 import {WinnerDialogComponent} from './public/pre-game-round/winner-dialog/winner.dialog.component';
+import {GameService} from "./public/common/service/game.service";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import {WinnerDialogComponent} from './public/pre-game-round/winner-dialog/winne
     ProgressTimerComponent,
     RoundResultComponent,
     StartCasePipe,
-    WinnerDialogComponent,
+    WinnerDialogComponent
   ],
   imports: [
     MatButtonModule,
@@ -67,7 +68,7 @@ import {WinnerDialogComponent} from './public/pre-game-round/winner-dialog/winne
     MatSelectModule,
     MatOptionModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent],
   entryComponents: [WinnerDialogComponent]
 })

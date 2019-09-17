@@ -6,6 +6,7 @@
     <button *ngIf="hasGame" mat-flat-button class="full-colored"
             routerLink="/pre-game-round" routerLinkActive="active">Продолжить</button>
     <button mat-flat-button class="full-colored"
+            (click)="createNewGame()"
             routerLink="/create-new-game" routerLinkActive="active">Новая игра</button>
     <button mat-flat-button class="border-colored">Словари</button>
     <button mat-flat-button class="border-colored">Правила</button>

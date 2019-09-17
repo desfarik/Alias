@@ -6,12 +6,14 @@ import {Word} from '../game-round/game-round.component';
 export class Game {
   public teams: Team[];
   public words: string[];
+  public dictionaryName: string;
   public duration: number;
   public pointCount: number;
   public currentTeam: Team;
   public finishedRoundWords: Word[];
 
   constructor(game: IGame) {
+    this.dictionaryName = game.dictionaryName;
     this.words = game.words || DictionaryService.getWords(game.dictionaryName);
     this.duration = game.duration;
     this.pointCount = game.pointCount;

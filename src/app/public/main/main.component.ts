@@ -8,7 +8,13 @@ import {Component, OnInit} from '@angular/core';
 export class MainComponent implements OnInit {
   public hasGame = !!localStorage.getItem('game');
 
+  constructor() {
+  }
+
   ngOnInit() {
   }
 
+  createNewGame() {
+    localStorage.removeItem('game');
+  }
 }

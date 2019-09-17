@@ -55,4 +55,9 @@ export class GameService {
     }
     this.save();
   }
+
+  public endGame(): void {
+    localStorage.removeItem(GameService.GAME_KEY);
+    this.game = undefined;
+  }
 }

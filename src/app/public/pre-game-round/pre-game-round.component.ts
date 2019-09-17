@@ -17,15 +17,18 @@ export class PreGameRoundComponent {
   public newRound: boolean;
   public extraRound: boolean = false;
   public canStartNewGame: boolean = false;
+  public teams: Team[] = [];
 
   constructor(public gameService: GameService, private router: Router, public dialog: MatDialog) {
     this.nextTeam = this.gameService.game.teams.find(team => !team.played);
     this.newRound = this.gameService.game.teams.every(team => !team.played);
+    this.teams = this.gameService.game.teams;
     if (this.newRound) {
       const winnerTeams = this.gameService.game.teams.filter(team => team.points >= this.gameService.game.pointCount);
       if (winnerTeams.length === 1) {
         this.openDialog(winnerTeams[0].name);
         this.canStartNewGame = true;
+        this.gameService.endGame();
       } else if (winnerTeams.length > 1) {
         this.extraRound = true;
       }
