@@ -3,7 +3,8 @@ import {Game} from '../common/game';
 import {GameService} from '../common/service/game.service';
 import {Router} from '@angular/router';
 import {SettingsComponent} from './components/settings/settings.component';
-import {TeamSelectComponent} from "./components/team/team-select.component";
+import {TeamSelectComponent} from './components/team/team-select.component';
+import {DictionaryComponent} from './components/dictionary/dictionary.component';
 
 @Component({
   selector: 'app-create-new-game',
@@ -15,6 +16,8 @@ export class CreateNewGameComponent implements OnInit {
   private settings: SettingsComponent;
   @ViewChild(TeamSelectComponent, {static: true})
   private teamComponent: TeamSelectComponent;
+  @ViewChild(DictionaryComponent, {static: true})
+  private dictionaryComponent: DictionaryComponent;
 
   constructor(private gameService: GameService, private router: Router) {
   }
@@ -28,7 +31,7 @@ export class CreateNewGameComponent implements OnInit {
       return;
     }
     const newGame = new Game({
-      dictionaryName: 'dictionary',
+      dictionaryName: this.dictionaryComponent.selectedDictionary,
       teams: this.teamComponent.getTeams(),
       duration: this.settings.time,
       pointCount: this.settings.wordCount

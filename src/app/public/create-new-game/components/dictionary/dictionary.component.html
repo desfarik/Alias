@@ -1,14 +1,18 @@
-<div class="card">
+<div class="card select-dictionary-container">
   <div class="title">
     <span>Словарь</span>
   </div>
-  <div class="content-container select-dictionary" matRipple>
+  <div class="content-container select-dictionary" matRipple (click)="opedDropdown()">
     <div class="content-icon">
       <img src="../../../../../assets/dictionary.svg">
     </div>
     <div class="content">
-      <span>Словарь  не выбран</span>
+      <span *ngIf="!selectedDictionary">Словарь  не выбран</span>
+      <span *ngIf="selectedDictionary">{{selectedDictionary}}</span>
       <mat-icon class="open">navigate_next</mat-icon>
     </div>
   </div>
+  <mat-select [(value)]="selectedDictionary" class="invisible-select" disableOptionCentering>
+    <mat-option *ngFor="let dictionary of dictionaryService.dictionaryNames" value="{{dictionary}}">{{dictionary}}</mat-option>
+  </mat-select>
 </div>

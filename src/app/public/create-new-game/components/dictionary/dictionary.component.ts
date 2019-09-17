@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSelect} from '@angular/material';
+import {DictionaryService} from '../../../common/service/dictionary.service';
 
 @Component({
   selector: 'dictionary',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DictionaryComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(MatSelect, {static: true})
+  private selectComponent: MatSelect;
+
+  constructor(public dictionaryService: DictionaryService) {
+  }
+
+  public selectedDictionary = '';
 
   ngOnInit() {
+  }
+
+  public opedDropdown(): void {
+    this.selectComponent.open();
   }
 
 }

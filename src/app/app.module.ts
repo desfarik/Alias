@@ -12,8 +12,10 @@ import {
   MatDialogModule,
   MatDividerModule,
   MatIconModule,
+  MatOptionModule,
   MatRadioModule,
   MatRippleModule,
+  MatSelectModule,
   MatToolbarModule
 } from '@angular/material';
 import {DictionaryComponent} from './public/create-new-game/components/dictionary/dictionary.component';
@@ -61,9 +63,11 @@ import {WinnerDialogComponent} from './public/pre-game-round/winner-dialog/winne
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule
   ],
-  providers: [WinnerDialogComponent],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [WinnerDialogComponent]
 })
