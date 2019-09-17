@@ -1,0 +1,18 @@
+@import "../../../global-variables";
+
+.winner-dialog {
+  margin-bottom: 12px;
+  line-height: 24px;
+  min-width: 60vw;
+}
+
+.full-colored {
+  background: $main-color;
+  color: white;
+}
+
+.centred {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
