@@ -18,11 +18,13 @@ export class PreGameRoundComponent {
   public extraRound: boolean = false;
   public canStartNewGame: boolean = false;
   public teams: Team[] = [];
+  public oldGame: Game;
 
   constructor(public gameService: GameService, private router: Router, public dialog: MatDialog) {
     this.nextTeam = this.gameService.game.teams.find(team => !team.played);
     this.newRound = this.gameService.game.teams.every(team => !team.played);
     this.teams = this.gameService.game.teams;
+    this.oldGame = this.gameService.game;
     if (this.newRound) {
       const winnerTeams = this.gameService.game.teams.filter(team => team.points >= this.gameService.game.pointCount);
       if (winnerTeams.length === 1) {
@@ -30,7 +32,15 @@ export class PreGameRoundComponent {
         this.canStartNewGame = true;
         this.gameService.endGame();
       } else if (winnerTeams.length > 1) {
-        this.extraRound = true;
+        if (winnerTeams.every(team => team.points === this.gameService.game.teams[0].points)) {
+          this.extraRound = true;
+        } else {
+          const maxPoint = Math.max(...winnerTeams.map(team => team.points));
+          const winnerTeam = winnerTeams.find(team => team.points === maxPoint);
+          this.openDialog(winnerTeam.name);
+          this.canStartNewGame = true;
+          this.gameService.endGame();
+        }
       }
     }
   }
@@ -55,9 +65,9 @@ export class PreGameRoundComponent {
   public startNewGame() {
     const newGame = new Game({
       dictionaryName: 'dictionary',
-      teams: this.gameService.game.teams.map(team => new Team({name: team.name, icon: team.icon})),
-      duration: this.gameService.game.duration,
-      pointCount: this.gameService.game.pointCount
+      teams: this.oldGame.teams.map(team => new Team({name: team.name})),
+      duration: this.oldGame.duration,
+      pointCount: this.oldGame.pointCount
     });
     this.gameService.createNewGame(newGame);
     this.gameService.game.setCurrentTeam(this.nextTeam);
@@ -67,7 +77,8 @@ export class PreGameRoundComponent {
 
   openDialog(name): void {
     this.dialog.open(WinnerDialogComponent, {
-      data: {name: name}
+      data: {name: name},
+      autoFocus: false
     });
   }
 

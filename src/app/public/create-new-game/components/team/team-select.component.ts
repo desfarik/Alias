@@ -25,7 +25,7 @@ export class TeamSelectComponent implements OnInit {
   public getTeams(): ITeam[] {
     const result: ITeam[] = [];
     this.selectedTeams.forEach((team) => {
-      result.push({icon: team, name: team});
+      result.push({name: team});
     });
     return result;
   }

@@ -5,8 +5,8 @@
     </button>
     <div class="title">
       <p>Следующими играют</p>
-      <p class="next-team-name">{{nextTeam.name}}</p>
-      <div class="team-icon"><img src="{{'assets/teams/'+nextTeam.icon+'.svg'}}"/></div>
+      <p class="next-team-name">{{nextTeam.name | teamName}}</p>
+      <div class="team-icon"><img src="{{'assets/teams/'+nextTeam.name+'.svg'}}"/></div>
     </div>
   </div>
   <div class="scrollable-area">
@@ -18,7 +18,7 @@
                           [ngClass]="{'new-round':newRound}">
           <div class="team-description">
             <div class="team-name">
-              <p>{{team.name}}</p>
+              <p>{{team.name | teamName}}</p>
               <p *ngIf="!team.played" class="has-game">* Игра в запасе</p>
             </div>
             <div class="points">

@@ -33,6 +33,7 @@ import {RoundResultComponent} from './public/round-result/round-result.component
 import {StartCasePipe} from './public/round-result/pipes/start-case.pipe';
 import {WinnerDialogComponent} from './public/pre-game-round/winner-dialog/winner.dialog.component';
 import {GameService} from "./public/common/service/game.service";
+import { TeamNamePipe } from './public/pre-game-round/team-name.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {GameService} from "./public/common/service/game.service";
     ProgressTimerComponent,
     RoundResultComponent,
     StartCasePipe,
-    WinnerDialogComponent
+    WinnerDialogComponent,
+    TeamNamePipe
   ],
   imports: [
     MatButtonModule,

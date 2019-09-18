@@ -4,7 +4,7 @@
       <mat-icon>clear</mat-icon>
     </button>
     <div class="toolbar-content">
-      <span class="title">{{gameService.game.currentTeam.name}}</span>
+      <span class="title">{{gameService.game.currentTeam.name | teamName}}</span>
       <progress-timer [time]="gameService.game.duration"
                       [gameStarted]="gameStarted"
                       (onRoundFinish)="finishRound()"></progress-timer>
