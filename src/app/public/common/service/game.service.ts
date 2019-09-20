@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Game, IGame} from '../game';
+import {DictionaryService} from "./dictionary.service";
 
 @Injectable({
   providedIn: 'root'
@@ -35,10 +36,15 @@ export class GameService {
   }
 
   public getNextWord(): string {
-    const index = Math.floor(Math.random() * this.game.words.length);
-    const word = this.game.words[index];
-    this.game.words.splice(index, 1);
-    return word;
+    if(this.game.words.length > 0) {
+      const index = Math.floor(Math.random() * this.game.words.length);
+      const word = this.game.words[index];
+      this.game.words.splice(index, 1);
+      return word;
+    }
+    console.error('new');
+    this.game.words = DictionaryService.getWords(this.game.dictionaryName);
+    return this.getNextWord();
   }
 
   public finishRound(points: number): void {

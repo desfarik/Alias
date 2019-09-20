@@ -72,7 +72,6 @@ export class GameRoundComponent implements OnInit {
   ngOnInit() {
     this.gameService.shuffleWords();
     this.word = this.gameService.getNextWord();
-    this.gameService.game.duration = 10;
   }
 
 }
